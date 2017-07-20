@@ -8,12 +8,14 @@ SOURCES += \
     src/scriptprocess.cpp
 
 HEADERS += \
-    src/scriptvisor.rc \
     src/backend.h \
     src/scriptprocess.h
 
 RESOURCES += \
     src/scriptvisor.qrc
+
+RC_FILE += \
+    src/scriptvisor.rc
 
 TRANSLATIONS += \
     i18n/scriptvisor_en.ts \
@@ -21,11 +23,6 @@ TRANSLATIONS += \
     i18n/scriptvisor_zh_cn.ts \
     i18n/scriptvisor_zh_hk.ts \
     i18n/scriptvisor_zh_tw.ts
-
-DISTFILES += \
-    assets/icon.ico \
-    assets/icon.png \
-    assets/icon.svg
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
