@@ -42,12 +42,22 @@ function shellName() {
 function dumpScripts(listModel) {
     var result = []
     for(var i = 0; i < listModel.length; i++) {
+        if(Qt.backend.shell === "Bash") {
+            listModel[i].startupScriptBash = listModel[i].startupScript
+            listModel[i].shutdownScriptBash = listModel[i].shutdownScript
+        }
+        if(Qt.backend.shell === "PowerShell") {
+            listModel[i].startupScriptPS = listModel[i].startupScript
+            listModel[i].shutdownScriptPS = listModel[i].shutdownScript
+        }
         var item = {
             name: listModel[i].name,
             autoStart: listModel[i].autoStart,
             restartDelay: listModel[i].restartDelay,
-            startupScript: listModel[i].startupScript.split("\n"),
-            shutdownScript: listModel[i].shutdownScript.split("\n")
+            startupScriptBash: listModel[i].startupScriptBash.split("\n"),
+            startupScriptPS: listModel[i].startupScriptPS.split("\n"),
+            shutdownScriptBash: listModel[i].shutdownScriptBash.split("\n"),
+            shutdownScriptPS: listModel[i].shutdownScriptPS.split("\n")
         }
         result.push(item)
     }
@@ -63,8 +73,18 @@ function parseScripts(scriptList, str) {
         item.name = obj[i].name
         item.autoStart = obj[i].autoStart
         item.restartDelay = obj[i].restartDelay
-        item.startupScript = obj[i].startupScript.join("\n")
-        item.shutdownScript = obj[i].shutdownScript.join("\n")
+        item.startupScriptBash = obj[i].startupScriptBash.join("\n")
+        item.startupScriptPS = obj[i].startupScriptPS.join("\n")
+        item.shutdownScriptBash = obj[i].shutdownScriptBash.join("\n")
+        item.shutdownScriptPS = obj[i].shutdownScriptPS.join("\n")
+        if(Qt.backend.shell === "Bash") {
+            item.startupScript = item.startupScriptBash
+            item.shutdownScript = item.shutdownScriptBash
+        }
+        if(Qt.backend.shell === "PowerShell") {
+            item.startupScript = item.startupScriptPS
+            item.shutdownScript = item.shutdownScriptPS
+        }
         result.push(item)
     }
     return result

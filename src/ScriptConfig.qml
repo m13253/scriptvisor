@@ -46,7 +46,11 @@ Item {
     property bool autoStart: false
     property real restartDelay: 1
     property string startupScript
+    property string startupScriptBash
+    property string startupScriptPS
     property string shutdownScript
+    property string shutdownScriptBash
+    property string shutdownScriptPS
     property ScriptProcess process: null
     property Timer timer: Timer {
         interval: restartDelay * 1000
