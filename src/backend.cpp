@@ -32,9 +32,14 @@
 */
 
 #include "backend.h"
+#include <QApplication>
 #include <QFile>
+#include <QIcon>
 
 Backend::Backend(QObject *parent) : QObject(parent) {
+    qApp->setApplicationDisplayName(tr("Scriptvisor"));
+    qApp->setDesktopFileName("scriptvisor-autostart.desktop");
+    qApp->setWindowIcon(QIcon("qrc:/icon.png"));
 }
 
 QString Backend::shell() const {

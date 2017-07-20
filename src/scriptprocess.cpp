@@ -32,7 +32,7 @@
 */
 
 #include "scriptprocess.h"
-#include <QCoreApplication>
+#include <QApplication>
 #include <QDateTime>
 #include <QDir>
 #include "backend.h"

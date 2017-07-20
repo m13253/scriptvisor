@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>Backend</name>
+    <message>
+        <location filename="../src/backend.cpp" line="40"/>
+        <source>Scriptvisor</source>
+        <translation>脚本监视器</translation>
+    </message>
+</context>
+<context>
     <name>ScriptInfo</name>
     <message>
         <location filename="../src/ScriptInfo.qml" line="45"/>

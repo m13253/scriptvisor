@@ -8,6 +8,7 @@ Name[ja]=スクリプトバイザー
 Name[zh_CN]=脚本监视器
 Name[zh_HK]=指令碼監視員
 Name[zh_TW]=指令碼監視員
+NoDisplay=true
 Terminal=false
 Type=Application
 X-GNOME-AutoRestart=false
