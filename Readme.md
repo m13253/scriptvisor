@@ -75,6 +75,6 @@ The configuration and log files will be placed at `~/.config/scriptvisor`.
 
 ## License
 
-Scriptvisor is licensed under BSD-3-Clause, see [LICENSE](LICENSE) for more details.
+Scriptvisor is licensed under LGPL 3.0 or later, see [LICENSE](LICENSE) for more details.
 
 You may embed Scriptvisor into your toolbox and release it as you like. But remember to leave a link to this original project, so users can update Scriptvisor when new versions release.
