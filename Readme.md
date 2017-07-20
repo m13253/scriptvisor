@@ -9,7 +9,7 @@ Simple supervisor utility to allow you start & stop preconfigured scripts in one
 
 ## Building
 
-You will need at least Qt 5.8 to build it
+You will need at least [Qt](https://www.qt.io/) 5.8 to build it
 
 - To build using an IDE:
 
@@ -19,7 +19,7 @@ You will need at least Qt 5.8 to build it
 
   3. Click Build → Build Project "Scriptvisor"
 
-- To build using QBS
+- To build using [Qbs](http://doc.qt.io/qbs/)
 
   1. Type `qbs setup-qt --detect`
 
