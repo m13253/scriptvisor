@@ -141,6 +141,7 @@ Page {
                     id: startupScript
                     text: config.startupScript
                     font.family: "Monospace"
+                    wrapMode: TextEdit.WrapAnywhere
                     Layout.columnSpan: 3
                     Layout.fillWidth: true
                     Layout.minimumHeight: 50
@@ -154,6 +155,7 @@ Page {
                     id: shutdownScript
                     text: config.shutdownScript
                     font.family: "Monospace"
+                    wrapMode: TextEdit.WrapAnywhere
                     Layout.columnSpan: 3
                     Layout.fillWidth: true
                     Layout.minimumHeight: 50
