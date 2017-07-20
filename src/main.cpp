@@ -32,6 +32,7 @@
 */
 
 #include <QApplication>
+#include <QTranslator>
 #include <QQmlApplicationEngine>
 #include "backend.h"
 #include "scriptprocess.h"
@@ -40,6 +41,10 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
+
+    QTranslator appTranslator;
+    appTranslator.load(QLocale(), "Scriptvisor", "_", ":/i18n");
+    app.installTranslator(&appTranslator);
 
     bool dashdash = false;
     for(int i = 1; i < app.arguments().length(); ++i) {

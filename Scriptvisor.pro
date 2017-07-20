@@ -3,11 +3,29 @@ QT += qml quick widgets
 CONFIG += c++11
 
 SOURCES += \
-    src/main.cpp \
     src/backend.cpp \
+    src/main.cpp \
     src/scriptprocess.cpp
 
-RESOURCES += src/qml.qrc
+HEADERS += \
+    src/Scriptvisor.rc \
+    src/backend.h \
+    src/scriptprocess.h
+
+RESOURCES += \
+    src/Scriptvisor.qrc
+
+TRANSLATIONS += \
+    i18n/Scriptvisor_en.ts \
+    i18n/Scriptvisor_ja.ts \
+    i18n/Scriptvisor_zh_cn.ts \
+    i18n/Scriptvisor_zh_hk.ts \
+    i18n/Scriptvisor_zh_tw.ts
+
+DISTFILES += \
+    assets/icon.ico \
+    assets/icon.png \
+    assets/icon.svg
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -30,12 +48,3 @@ DEFINES += QT_DEPRECATED_WARNINGS
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES += src/assets/icon.png \
-    src/assets/icon.svg \
-    src/assets/icon.ico
-
-HEADERS += \
-    src/backend.h \
-    src/scriptprocess.h \
-    src/Scriptvisor.rc

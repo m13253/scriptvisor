@@ -37,9 +37,7 @@ import "main.js" as JS
 
 Item {
     id: config
-    property real uniq: {
-        return Math.random()
-    }
+    property real uniq
     property string name
     property bool started: false
     property bool failed: false
@@ -55,5 +53,9 @@ Item {
     property Timer timer: Timer {
         interval: restartDelay * 1000
         onTriggered: JS.restartScript(config)
+    }
+
+    Component.onCompleted: {
+        uniq = Math.random()
     }
 }

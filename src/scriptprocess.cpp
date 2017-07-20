@@ -69,11 +69,14 @@ void ScriptProcess::start(const QString &script, const QString &log) {
         if(
             (c >= 0 && c <= 31) ||
             (c == '<') || (c == '>') || (c == '|') ||
-            (c == '"') ||
+            (c == '"') || (c == '%') ||
             (c == '/') || (c == '\\') || (c == ':') ||
             (c == '?') || (c == '*')
         ) {
             logFilenameBuffer += '%';
+            if(c >= 0 && c <= 9) {
+                logFilenameBuffer += '0';
+            }
             logFilenameBuffer += QString::number(c, 16).toUtf8();
         } else {
             logFilenameBuffer += c;
@@ -83,7 +86,7 @@ void ScriptProcess::start(const QString &script, const QString &log) {
     QString logFilename = QString::fromUtf8(logFilenameBuffer);
     logFile = new QFile(logFilename);
     logFile->open(QFile::Append | QFile::Text);
-    logFile->write(QString(":: Script started at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+    logFile->write(tr(":: Script started at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
     logFile->close();
     process = new QProcess(parent());
     QStringList arguments;
@@ -102,13 +105,13 @@ void ScriptProcess::start(const QString &script, const QString &log) {
         scriptFile->remove();
         logFile->open(QFile::Append | QFile::Text);
         if(exitStatus == QProcess::NormalExit && exitCode == 0) {
-            logFile->write(QString(":: Script finished at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+            logFile->write(tr(":: Script finished at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
             emit finished();
         } else {
             if(started) {
-                logFile->write(QString(":: Script failed at %1, return code = %2\n").arg(QDateTime::currentDateTime().toString(), QString::number(exitCode)).toUtf8());
+                logFile->write(tr(":: Script failed at %1, return code = %2\n").arg(QDateTime::currentDateTime().toString(), QString::number(exitCode)).toUtf8());
             } else {
-                logFile->write(QString(":: Script terminated at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+                logFile->write(tr(":: Script terminated at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
             }
             emit failed();
         }

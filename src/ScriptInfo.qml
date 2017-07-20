@@ -98,6 +98,7 @@ Page {
                 }
                 TextField {
                     text: config.name
+                    placeholderText: qsTr("(Untitled)")
                     Layout.columnSpan: 3
                     Layout.fillWidth: true
                     onTextChanged: config.name = text
