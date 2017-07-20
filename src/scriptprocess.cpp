@@ -124,7 +124,7 @@ void ScriptProcess::stop() {
             taskkill->setStandardInputFile(QProcess::nullDevice());
             taskkill->setStandardOutputFile(QProcess::nullDevice());
             taskkill->setStandardErrorFile(QProcess::nullDevice());
-            connect(taskkill, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), [=](int, QProcess::ExitStatus) {
+            connect(taskkill, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, [=](int, QProcess::ExitStatus) {
                 delete taskkill;
             });
             taskkill->start();
