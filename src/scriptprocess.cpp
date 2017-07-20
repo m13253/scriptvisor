@@ -88,7 +88,7 @@ void ScriptProcess::start(const QString &script, const QString &log) {
     QString logFilename = QString::fromUtf8(logFilenameBuffer);
     logFile = new QFile(logFilename);
     logFile->open(QFile::Append | QFile::Text);
-    logFile->write(tr(":: Script started at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+    logFile->write(tr(":: Script started at %1\n").arg(QDateTime::currentDateTime().toString()).toLocal8Bit());
     logFile->close();
     process = new QProcess(parent());
     QStringList arguments;
@@ -149,15 +149,15 @@ void ScriptProcess::onProcessFinished(int exitCode, QProcess::ExitStatus exitSta
     }
     if(exitStatus == QProcess::NormalExit && exitCode == 0) {
         if(logFile) {
-            logFile->write(tr(":: Script finished at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+            logFile->write(tr(":: Script finished at %1\n").arg(QDateTime::currentDateTime().toString()).toLocal8Bit());
         }
         emit finished();
     } else {
         if(logFile) {
             if(started) {
-                logFile->write(tr(":: Script failed at %1, return code = %2\n").arg(QDateTime::currentDateTime().toString(), QString::number(exitCode)).toUtf8());
+                logFile->write(tr(":: Script failed at %1, return code = %2\n").arg(QDateTime::currentDateTime().toString(), QString::number(exitCode)).toLocal8Bit());
             } else {
-                logFile->write(tr(":: Script terminated at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+                logFile->write(tr(":: Script terminated at %1\n").arg(QDateTime::currentDateTime().toString()).toLocal8Bit());
             }
         }
         emit failed();
