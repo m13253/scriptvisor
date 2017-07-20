@@ -3,6 +3,12 @@ Scriptvisor
 
 Simple supervisor utility to allow you start & stop preconfigured scripts in one click
 
+## Download
+
+See the [releases](https://github.com/m13253/Scriptvisor/releases) page.
+
+## Screenshots
+
 ![Screenshot 1](assets/screenshot-1.png)
 
 ![Screenshot 2](assets/screenshot-2.png)
@@ -52,6 +58,20 @@ By default, PowerShell will require scripts to be digitally signed. You will hav
 1. Open PowerShell as Administrator (Right click and select "Run as Administrator")
 
 2. Type `Set-ExecutionPolicy RemoteSigned`
+
+## Auto starting
+
+### Windows
+
+Place a shortcut to `scriptvisor.exe -autostart` at `%AppData%\Microsoft\Windows\Start Menu\Programs\Startup`.
+
+Set the "Start in" property of the shortcut to a folder you want to place the configuration and log files.
+
+### Linux
+
+Type `sudo make install` to install XDG autostart configuration.
+
+The configuration and log files will be placed at `~/.config/scriptvisor`.
 
 ## License
 
