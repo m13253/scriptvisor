@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>ScriptList.qml</file>
+        <file>ScriptInfo.qml</file>
+        <file>ScriptConfig.qml</file>
+        <file>main.js</file>
+        <file alias="icon.png">assets/icon.png</file>
+    </qresource>
+</RCC>
