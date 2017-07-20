@@ -51,7 +51,7 @@ If your startup script does not exit, or returns an exit code of zero, your scri
 
 When your startup script is shown as "running", you can click on the switch to stop the script.
 
-The shutdown script will be first executed, then processes started with startup script will be killed.
+The shutdown script will be first executed, then processes started by startup script will be killed.
 
 All shutdown scripts need to be executed before Scriptvisor exits. You may choose "Force Quit" in the tray icon menu if it takes too long.
 
