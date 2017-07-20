@@ -21,7 +21,7 @@ You will need at least [Qt](https://www.qt.io/) 5.8 to build it
 
   1. Open [Qt Creator](https://www.qt.io/ide/)
 
-  2. Open `scriptvisor.qbs`
+  2. Open `scriptvisor.pro`
 
   3. Click Build → Build Project "scriptvisor"
 
