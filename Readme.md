@@ -19,21 +19,11 @@ You will need at least [Qt](https://www.qt.io/) 5.8 to build it
 
   3. Click Build → Build Project "Scriptvisor"
 
-- To build using [Qbs](http://doc.qt.io/qbs/)
+- To build using command-line
 
-  1. Type `qbs setup-qt --detect`
+  1. Install [qmake](http://doc.qt.io/qt-5/qmake-overview.html)
 
-     A list of profile names will be shown on the screen, copy the one you need, for example, `qt-5-8-0`
-
-  2. Type `qbs setup-toolchains --detect`
-
-  3. Type `qbs config defaultProfile qt-5-8-0`, where `qt-5-8-0` is the profile name you just copied
-
-  4. Type `mkdir -p build`
-
-  5. Type `qbs build -d build`
-
-  To simplify your build process, you can type `make`, which will execute `Makefile` and do the work for you.
+  2. Type `make`
 
 ## Scripting
 
