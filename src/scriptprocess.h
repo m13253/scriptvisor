@@ -58,6 +58,9 @@ private:
 signals:
     void finished();
     void failed();
+
+public slots:
+    void onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
 };
 
 #endif // SCRIPTPROCESS_H

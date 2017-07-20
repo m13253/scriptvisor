@@ -45,7 +45,9 @@ ScriptProcess::ScriptProcess(QObject *parent) : QObject(parent) {
 
 ScriptProcess::~ScriptProcess() {
     delete scriptFile;
+    scriptFile = nullptr;
     delete logFile;
+    logFile = nullptr;
 }
 
 void ScriptProcess::start(const QString &script, const QString &log) {
@@ -101,22 +103,7 @@ void ScriptProcess::start(const QString &script, const QString &log) {
     process->setStandardInputFile(QProcess::nullDevice());
     process->setStandardOutputFile(logFilename, QProcess::Append);
     process->setStandardErrorFile(logFilename, QProcess::Append);
-    connect(process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
-        scriptFile->remove();
-        logFile->open(QFile::Append | QFile::Text);
-        if(exitStatus == QProcess::NormalExit && exitCode == 0) {
-            logFile->write(tr(":: Script finished at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
-            emit finished();
-        } else {
-            if(started) {
-                logFile->write(tr(":: Script failed at %1, return code = %2\n").arg(QDateTime::currentDateTime().toString(), QString::number(exitCode)).toUtf8());
-            } else {
-                logFile->write(tr(":: Script terminated at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
-            }
-            emit failed();
-        }
-        logFile->close();
-    });
+    connect(process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &ScriptProcess::onProcessFinished);
     started = true;
     process->start();
 }
@@ -151,4 +138,31 @@ void ScriptProcess::relayExecution(const QString &script) {
     setpgid(pid, pid);
     execlp("bash", "bash", script.toUtf8().data(), nullptr);
 #endif
+}
+
+void ScriptProcess::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    if(scriptFile) {
+        scriptFile->remove();
+    }
+    if(logFile) {
+        logFile->open(QFile::Append | QFile::Text);
+    }
+    if(exitStatus == QProcess::NormalExit && exitCode == 0) {
+        if(logFile) {
+            logFile->write(tr(":: Script finished at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+        }
+        emit finished();
+    } else {
+        if(logFile) {
+            if(started) {
+                logFile->write(tr(":: Script failed at %1, return code = %2\n").arg(QDateTime::currentDateTime().toString(), QString::number(exitCode)).toUtf8());
+            } else {
+                logFile->write(tr(":: Script terminated at %1\n").arg(QDateTime::currentDateTime().toString()).toUtf8());
+            }
+        }
+        emit failed();
+    }
+    if(logFile) {
+        logFile->close();
+    }
 }
