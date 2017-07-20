@@ -53,7 +53,7 @@ All shutdown scripts need to be executed before Scriptvisor exits. You may choos
 
 ### PowerShell execution policy problem
 
-By default, PowerShell will require scripts to be digitally signed. You will have to set execution policy to `RemoteSigned` or `Unrestricted` to use Scriptvisor.
+By default, PowerShell require scripts to be digitally signed. You have to set execution policy to `RemoteSigned` or `Unrestricted` to use Scriptvisor.
 
 1. Open PowerShell as Administrator (Right click and select "Run as Administrator")
 
