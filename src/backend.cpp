@@ -92,5 +92,5 @@ ScriptProcess *Backend::createScriptProcess(QObject *parent) const {
 }
 
 bool Backend::m_minimized = false;
-QString Backend::m_configFile = "Scriptvisor.json";
-QString Backend::m_logDir = "Scriptvisor-logs";
+QString Backend::m_configFile = "scriptvisor.json";
+QString Backend::m_logDir = "scriptvisor-logs";

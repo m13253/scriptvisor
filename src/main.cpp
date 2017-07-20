@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QTranslator appTranslator;
-    appTranslator.load(QLocale(), "Scriptvisor", "_", ":/i18n");
+    appTranslator.load(QLocale(), "scriptvisor", "_", ":/i18n");
     app.installTranslator(&appTranslator);
 
     bool dashdash = false;

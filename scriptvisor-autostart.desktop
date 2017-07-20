@@ -1,0 +1,17 @@
+[Desktop Entry]
+Categories=System;Utility;
+Exec=scriptvisor-autostart
+Icon=scriptvisor
+Name=Scriptvisor
+Name[en]=Scriptvisor
+Name[ja]=スクリプトバイザー
+Name[zh_CN]=脚本监视器
+Name[zh_HK]=程序碼監視員
+Name[zh_TW]=程序碼監視員
+Terminal=false
+Type=Application
+X-GNOME-AutoRestart=false
+X-GNOME-Autostart-Notify=false
+X-GNOME-Autostart-Phase=Applications
+X-KDE-StartupNotify=false
+X-KDE-autostart-after=panel

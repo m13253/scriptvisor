@@ -8,19 +8,19 @@ SOURCES += \
     src/scriptprocess.cpp
 
 HEADERS += \
-    src/Scriptvisor.rc \
+    src/scriptvisor.rc \
     src/backend.h \
     src/scriptprocess.h
 
 RESOURCES += \
-    src/Scriptvisor.qrc
+    src/scriptvisor.qrc
 
 TRANSLATIONS += \
-    i18n/Scriptvisor_en.ts \
-    i18n/Scriptvisor_ja.ts \
-    i18n/Scriptvisor_zh_cn.ts \
-    i18n/Scriptvisor_zh_hk.ts \
-    i18n/Scriptvisor_zh_tw.ts
+    i18n/scriptvisor_en.ts \
+    i18n/scriptvisor_ja.ts \
+    i18n/scriptvisor_zh_cn.ts \
+    i18n/scriptvisor_zh_hk.ts \
+    i18n/scriptvisor_zh_tw.ts
 
 DISTFILES += \
     assets/icon.ico \

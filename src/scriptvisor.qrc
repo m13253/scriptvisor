@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>ScriptList.qml</file>
+        <file>ScriptInfo.qml</file>
+        <file>ScriptConfig.qml</file>
+        <file>main.js</file>
+        <file alias="icon.png">../assets/icon.png</file>
+        <file alias="i18n/scriptvisor_en.qm">../i18n/scriptvisor_en.qm</file>
+        <file alias="i18n/scriptvisor_ja.qm">../i18n/scriptvisor_ja.qm</file>
+        <file alias="i18n/scriptvisor_zh_cn.qm">../i18n/scriptvisor_zh_cn.qm</file>
+        <file alias="i18n/scriptvisor_zh_hk.qm">../i18n/scriptvisor_zh_hk.qm</file>
+        <file alias="i18n/scriptvisor_zh_tw.qm">../i18n/scriptvisor_zh_tw.qm</file>
+    </qresource>
+</RCC>
