@@ -64,11 +64,17 @@ ApplicationWindow {
                 }
             }
             MenuItem {
-                text: "&Quit"
+                text: quitting ? "Force &quit" : "&Quit"
+                property bool quitting: false
                 onTriggered: {
-                    JS.stopAllScripts(scriptList.listModel, function() {
+                    if(quitting) {
                         Qt.quit()
-                    })
+                    } else {
+                        quitting = true
+                        JS.stopAllScripts(scriptList.listModel, function() {
+                            Qt.quit()
+                        })
+                    }
                 }
             }
         }
