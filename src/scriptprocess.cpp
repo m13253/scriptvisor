@@ -116,10 +116,10 @@ void ScriptProcess::stop() {
             QProcess *taskkill = new QProcess(parent());
 #ifdef WIN32
             taskkill->setProgram("taskkill");
-            taskkill->setArguments(QStringList({"/t", "/pid", QString::number(process->processId())}));
+            taskkill->setArguments(QStringList({"/t", "/pid", QString::number(pid)}));
 #else
             taskkill->setProgram("kill");
-            taskkill->setArguments(QStringList({"--", QString::number(process->processId()), QString::number(-process->processId())}));
+            taskkill->setArguments(QStringList({"--", QString::number(pid), QString::number(-pid)}));
 #endif
             taskkill->setStandardInputFile(QProcess::nullDevice());
             taskkill->setStandardOutputFile(QProcess::nullDevice());
