@@ -55,6 +55,14 @@ The shutdown script will be first executed, then processes started by startup sc
 
 All shutdown scripts need to be executed before Scriptvisor exits. You may choose "Force Quit" in the tray icon menu if it takes too long.
 
+### PowerShell execution policy problem
+
+By default, PowerShell will require scripts to be digitally signed. You will have to set execution policy to `RemoteSigned` or `Unrestricted` to use Scriptvisor.
+
+1. Open PowerShell as Administrator (Right click and select "Run as Administrator")
+
+2. Type `Set-ExecutionPolicy RemoteSigned`
+
 ## License
 
 Scriptvisor is licensed under BSD-3-Clause, see [LICENSE](LICENSE) for more details.
