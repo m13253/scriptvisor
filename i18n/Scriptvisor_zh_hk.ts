@@ -115,5 +115,20 @@
         <source>Scriptvisor</source>
         <translation>指令碼監視員</translation>
     </message>
+    <message>
+        <location filename="../src/main.qml" line="59"/>
+        <source>&amp;Restore</source>
+        <translation>還原 (&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>Force &amp;Quit</source>
+        <translation>強制結束 (&amp;Q)</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>&amp;Quit</source>
+        <translation>結束 (&amp;Q)</translation>
+    </message>
 </context>
 </TS>

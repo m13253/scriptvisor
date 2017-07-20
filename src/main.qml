@@ -56,7 +56,7 @@ ApplicationWindow {
         visible: true
         menu: Menu {
             MenuItem {
-                text: "&Restore"
+                text: qsTr("&Restore")
                 onTriggered: {
                     appWindow.show()
                     appWindow.raise()
@@ -64,7 +64,7 @@ ApplicationWindow {
                 }
             }
             MenuItem {
-                text: quitting ? "Force &quit" : "&Quit"
+                text: quitting ? qsTr("Force &Quit") : qsTr("&Quit")
                 property bool quitting: false
                 onTriggered: {
                     if(quitting) {

@@ -115,5 +115,20 @@
         <source>Scriptvisor</source>
         <translation>脚本监视器</translation>
     </message>
+    <message>
+        <location filename="../src/main.qml" line="59"/>
+        <source>&amp;Restore</source>
+        <translation>还原 (&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>Force &amp;Quit</source>
+        <translation>强制退出 (&amp;Q)</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>&amp;Quit</source>
+        <translation>退出 (&amp;Q)</translation>
+    </message>
 </context>
 </TS>

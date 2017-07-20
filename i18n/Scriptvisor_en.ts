@@ -115,5 +115,20 @@
         <source>Scriptvisor</source>
         <translation>Scriptvisor</translation>
     </message>
+    <message>
+        <location filename="../src/main.qml" line="59"/>
+        <source>&amp;Restore</source>
+        <translation>&amp;Restore</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>Force &amp;Quit</source>
+        <translation>Force &amp;Quit</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>&amp;Quit</source>
+        <translation>&amp;Quit</translation>
+    </message>
 </context>
 </TS>

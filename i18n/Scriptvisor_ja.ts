@@ -117,5 +117,20 @@
         <source>Scriptvisor</source>
         <translation>スクリプトバイザー</translation>
     </message>
+    <message>
+        <location filename="../src/main.qml" line="59"/>
+        <source>&amp;Restore</source>
+        <translation>復元 (&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>Force &amp;Quit</source>
+        <translation>強制終了 (&amp;Q)</translation>
+    </message>
+    <message>
+        <location filename="../src/main.qml" line="67"/>
+        <source>&amp;Quit</source>
+        <translation>終了 (&amp;Q)</translation>
+    </message>
 </context>
 </TS>
