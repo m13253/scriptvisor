@@ -1,4 +1,4 @@
-﻿Scriptvisor
+Scriptvisor
 ===========
 
 Simple supervisor utility to allow you start & stop preconfigured scripts in one click
