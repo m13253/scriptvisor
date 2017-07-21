@@ -74,6 +74,10 @@ ApplicationWindow {
         id: backend
     }
 
+    onClosing: function(event) {
+        event.accept = false;
+        appWindow.hide();
+    }
     Component.onCompleted: {
         JS.init(backend)
     }
