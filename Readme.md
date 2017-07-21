@@ -51,6 +51,17 @@ The shutdown script will be first executed, then processes started by startup sc
 
 All shutdown scripts need to be executed before Scriptvisor exits. You may choose "Force Quit" in the tray icon menu if it takes too long.
 
+### Wait for child processes in PowerShell
+
+If your startup script exits early, child processes created by your startup script will not be terminated when you stop the script. This happens when the child process is not a console application.
+
+To ensure your script waits for child processes, use `Start-Process -Wait` when creating child processes. For example:
+
+```powershell
+$p = Start-Process -Wait "notepad.exe"
+if ($p.ExitCode -ne 0) { exit $p.ExitCode }
+```
+
 ### PowerShell execution policy problem
 
 By default, PowerShell require scripts to be digitally signed. You have to set execution policy to `RemoteSigned` or `Unrestricted` to use Scriptvisor.
