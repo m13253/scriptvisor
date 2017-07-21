@@ -37,6 +37,7 @@ public:
 private:
     QProcess* process = nullptr;
     QTemporaryFile *scriptFile = nullptr;
+    QString scriptFilename;
     QFile *logFile = nullptr;
     bool started = false;
 

@@ -31,24 +31,31 @@ ScriptProcess::ScriptProcess(QObject *parent) : QObject(parent) {
 ScriptProcess::~ScriptProcess() {
     delete scriptFile;
     scriptFile = nullptr;
+    if(!scriptFilename.isEmpty()) {
+        QFile(scriptFilename).remove();
+        scriptFilename.clear();
+    }
     delete logFile;
     logFile = nullptr;
 }
 
 void ScriptProcess::start(const QString &script, const QString &log) {
     scriptFile = new QTemporaryFile;
+    scriptFile->setAutoRemove(false);
 #ifdef WIN32
     scriptFile->setFileTemplate(QDir::tempPath() + "\\Scriptvisor.XXXXXX.ps1");
 #else
     scriptFile->setFileTemplate(QDir::tempPath() + "/Scriptvisor.XXXXXX");
 #endif
-    scriptFile->setAutoRemove(true);
     scriptFile->open();
 #ifdef WIN32
     scriptFile->write("\xef\xbb\xbf", 3);
 #endif
     scriptFile->write(script.toUtf8());
-    scriptFile->close();
+    scriptFile->flush();
+    scriptFilename = scriptFile->fileName();
+    delete scriptFile;
+    scriptFile = nullptr;
     QDir().mkdir(Backend::logDir());
     QByteArray logFilenameBuffer(Backend::logDir().toUtf8());
     logFilenameBuffer += "/log-";
@@ -79,11 +86,12 @@ void ScriptProcess::start(const QString &script, const QString &log) {
     QStringList arguments;
 #ifdef WIN32
     process->setProgram("powershell");
+    arguments << "-ExecutionPolicy" << "Bypass";
 #else
     process->setProgram(qApp->applicationFilePath());
     arguments << "-exec";
 #endif
-    arguments << scriptFile->fileName();
+    arguments << scriptFilename;
     process->setArguments(arguments);
     process->setStandardInputFile(QProcess::nullDevice());
     process->setStandardOutputFile(logFilename, QProcess::Append);
@@ -118,7 +126,9 @@ void ScriptProcess::stop() {
 }
 
 void ScriptProcess::relayExecution(const QString &script) {
-#ifndef WIN32
+#ifdef WIN32
+    (void) script;
+#else
     pid_t pid = getpid();
     setpgid(pid, pid);
     execlp("bash", "bash", script.toUtf8().data(), nullptr);
@@ -126,8 +136,9 @@ void ScriptProcess::relayExecution(const QString &script) {
 }
 
 void ScriptProcess::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    if(scriptFile) {
-        scriptFile->remove();
+    if(!scriptFilename.isEmpty()) {
+        QFile(scriptFilename).remove();
+        scriptFilename.clear();
     }
     if(logFile) {
         logFile->open(QFile::Append | QFile::Text);
