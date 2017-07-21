@@ -45,11 +45,11 @@ function monospaceFont() {
 function dumpScripts(listModel) {
     var result = []
     for(var i = 0; i < listModel.length; i++) {
-        if(Qt.backend.shell === "Bash") {
+        if(shellName() === "Bash") {
             listModel[i].startupScriptBash = listModel[i].startupScript
             listModel[i].shutdownScriptBash = listModel[i].shutdownScript
         }
-        if(Qt.backend.shell === "PowerShell") {
+        if(shellName() === "PowerShell") {
             listModel[i].startupScriptPS = listModel[i].startupScript
             listModel[i].shutdownScriptPS = listModel[i].shutdownScript
         }
@@ -80,11 +80,11 @@ function parseScripts(scriptList, str) {
         item.startupScriptPS = obj[i].startupScriptPS.join("\n")
         item.shutdownScriptBash = obj[i].shutdownScriptBash.join("\n")
         item.shutdownScriptPS = obj[i].shutdownScriptPS.join("\n")
-        if(Qt.backend.shell === "Bash") {
+        if(shellName() === "Bash") {
             item.startupScript = item.startupScriptBash
             item.shutdownScript = item.shutdownScriptBash
         }
-        if(Qt.backend.shell === "PowerShell") {
+        if(shellName() === "PowerShell") {
             item.startupScript = item.startupScriptPS
             item.shutdownScript = item.shutdownScriptPS
         }
