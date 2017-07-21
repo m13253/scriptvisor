@@ -24,9 +24,9 @@ function shellName() {
     switch(Qt.platform.os) {
     case "windows":
     case "winrt":
-        return "PowerShell";
+        return "PowerShell"
     default:
-        return "Bash";
+        return "Bash"
     }
 }
 
@@ -34,11 +34,11 @@ function monospaceFont() {
     switch(Qt.platform.os) {
     case "windows":
     case "winrt":
-        return "Consolas";
+        return "Consolas"
     case "osx":
-        return "Menlo";
+        return "Menlo"
     default:
-        return "Monospace";
+        return "Monospace"
     }
 }
 
