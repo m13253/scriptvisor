@@ -28,6 +28,7 @@ Page {
     header: ToolBar {
         ToolButton {
             text: qsTr("‹")
+            font.pixelSize: 25
             anchors.left: parent.left
             onClicked: {
                 JS.saveScript(scriptList)
@@ -41,6 +42,7 @@ Page {
         }
         ToolButton {
             text: qsTr("⋮")
+            font.pixelSize: 25
             anchors.right: parent.right
             onClicked: optionsMenu.visible ? optionsMenu.close() : optionsMenu.open()
             Menu {

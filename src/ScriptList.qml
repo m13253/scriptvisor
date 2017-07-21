@@ -29,6 +29,7 @@ Page {
         }
         ToolButton {
             text: qsTr("+")
+            font.pixelSize: 25
             anchors.right: parent.right
             onClicked: {
                 var config = JS.newScript(root)

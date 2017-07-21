@@ -1,4 +1,4 @@
-QT += qml quick widgets
+QT += core qml quick widgets
 
 CONFIG += c++11
 
