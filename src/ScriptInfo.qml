@@ -127,7 +127,7 @@ Page {
                 TextArea {
                     id: startupScript
                     text: config.startupScript
-                    font.family: "Monospace"
+                    font.family: JS.monospaceFont()
                     wrapMode: TextEdit.WrapAnywhere
                     Layout.columnSpan: 3
                     Layout.fillWidth: true
@@ -141,7 +141,7 @@ Page {
                 TextArea {
                     id: shutdownScript
                     text: config.shutdownScript
-                    font.family: "Monospace"
+                    font.family: JS.monospaceFont()
                     wrapMode: TextEdit.WrapAnywhere
                     Layout.columnSpan: 3
                     Layout.fillWidth: true

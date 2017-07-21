@@ -27,14 +27,6 @@ Backend::Backend(QObject *parent) : QObject(parent) {
     qApp->setWindowIcon(QIcon("qrc:/icon.png"));
 }
 
-QString Backend::shell() const {
-#ifdef WIN32
-    return "PowerShell";
-#else
-    return "Bash";
-#endif
-}
-
 bool Backend::minimized() {
     return m_minimized;
 }

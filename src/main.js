@@ -21,7 +21,25 @@ function init(backend) {
 }
 
 function shellName() {
-    return Qt.backend.shell
+    switch(Qt.platform.os) {
+    case "windows":
+    case "winrt":
+        return "PowerShell";
+    default:
+        return "Bash";
+    }
+}
+
+function monospaceFont() {
+    switch(Qt.platform.os) {
+    case "windows":
+    case "winrt":
+        return "Consolas";
+    case "osx":
+        return "Menlo";
+    default:
+        return "Monospace";
+    }
 }
 
 function dumpScripts(listModel) {

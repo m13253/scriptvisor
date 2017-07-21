@@ -26,14 +26,12 @@
 class Backend : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString shell READ shell CONSTANT)
     Q_PROPERTY(bool minimized READ minimized WRITE setMinimized NOTIFY minimizedChanged)
     Q_PROPERTY(QString configFile READ configFile WRITE setConfigFile)
     Q_PROPERTY(QString logDir READ logDir WRITE setLogDir)
 
 public:
     explicit Backend(QObject *parent = nullptr);
-    QString shell() const;
     static bool minimized();
     static void setMinimized(bool newValue);
     static QString configFile();
@@ -50,7 +48,6 @@ private:
     static QString m_logDir;
 
 signals:
-    void shellChanged(const QString &);
     void minimizedChanged(bool);
 };
 

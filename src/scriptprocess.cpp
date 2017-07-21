@@ -52,6 +52,9 @@ void ScriptProcess::start(const QString &script, const QString &log) {
     scriptFile->write("\xef\xbb\xbf", 3);
 #endif
     scriptFile->write(script.toUtf8());
+#ifdef WIN32
+    scriptFile->write("\nexit $LASTEXITCODE\n", 20);
+#endif
     scriptFile->flush();
     scriptFilename = scriptFile->fileName();
     delete scriptFile;

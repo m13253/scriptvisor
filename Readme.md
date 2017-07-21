@@ -1,4 +1,4 @@
-Scriptvisor
+﻿Scriptvisor
 ===========
 
 Simple supervisor utility to allow you start & stop preconfigured scripts in one click
@@ -55,11 +55,11 @@ All shutdown scripts need to be executed before Scriptvisor exits. You may choos
 
 If your startup script exits early, child processes created by your startup script will not be terminated when you stop the script. This happens when the child process is not a console application.
 
-To ensure your script waits for child processes, use `Start-Process -Wait` when creating child processes. For example:
+To ensure your script waits for child processes, pipe the output to `Out-Host`. For example:
 
 ```powershell
-$p = Start-Process -Wait "notepad.exe"
-if ($p.ExitCode -ne 0) { exit $p.ExitCode }
+& notepad.exe | Out-Host
+exit $LASTEXITCODE
 ```
 
 ### PowerShell execution policy problem
