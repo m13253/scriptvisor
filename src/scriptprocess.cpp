@@ -21,7 +21,7 @@
 #include <QDateTime>
 #include <QDir>
 #include "backend.h"
-#ifndef WIN32
+#ifndef Q_OS_WIN
 #include "unistd.h"
 #endif
 
@@ -42,17 +42,17 @@ ScriptProcess::~ScriptProcess() {
 void ScriptProcess::start(const QString &script, const QString &log) {
     scriptFile = new QTemporaryFile;
     scriptFile->setAutoRemove(false);
-#ifdef WIN32
+#ifdef Q_OS_WIN
     scriptFile->setFileTemplate(QDir::tempPath() + "\\Scriptvisor.XXXXXX.ps1");
 #else
     scriptFile->setFileTemplate(QDir::tempPath() + "/Scriptvisor.XXXXXX");
 #endif
     scriptFile->open();
-#ifdef WIN32
+#ifdef Q_OS_WIN
     scriptFile->write("\xef\xbb\xbf", 3);
 #endif
     scriptFile->write(script.toUtf8());
-#ifdef WIN32
+#ifdef Q_OS_WIN
     scriptFile->write("\nexit $LASTEXITCODE\n", 20);
 #endif
     scriptFile->flush();
@@ -87,7 +87,7 @@ void ScriptProcess::start(const QString &script, const QString &log) {
     logFile->close();
     process = new QProcess(parent());
     QStringList arguments;
-#ifdef WIN32
+#ifdef Q_OS_WIN
     process->setProgram("powershell");
     arguments << "-ExecutionPolicy" << "Bypass";
 #else
@@ -110,7 +110,7 @@ void ScriptProcess::stop() {
         qint64 pid = process->processId();
         if(pid > 1) {
             QProcess *taskkill = new QProcess(parent());
-#ifdef WIN32
+#ifdef Q_OS_WIN
             taskkill->setProgram("taskkill");
             taskkill->setArguments(QStringList({"/t", "/pid", QString::number(pid)}));
 #else
@@ -129,7 +129,7 @@ void ScriptProcess::stop() {
 }
 
 void ScriptProcess::relayExecution(const QString &script) {
-#ifdef WIN32
+#ifdef Q_OS_WIN
     (void) script;
 #else
     pid_t pid = getpid();
